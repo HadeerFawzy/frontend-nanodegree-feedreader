@@ -37,7 +37,7 @@ $(function() {
                 expect(feed.url).toBeDefined();
                 expect(feed.url.length).not.toBe(0);
             });
-        });    
+        });
 
         /* TODO: Write a test that loops through each feed
          * in the allFeeds object and ensures it has a name defined
@@ -49,7 +49,7 @@ $(function() {
                 expect(feed.name).toBeDefined();
                 expect(feed.name.length).not.toBe(0);
             });
-        });  
+        });
 
     });
 
@@ -74,14 +74,12 @@ $(function() {
         it('menu visibility on click', function () {
             $('#menu-icon-link').trigger( "click" );
             expect($('body').hasClass('menu-hidden')).not.toBe(true);
-        });
 
-        it('menu visibility on click', function () {
             $('#menu-icon-link').trigger( "click" );
             expect($('body').hasClass('menu-hidden')).toBe(true);
         });
-        
-    }); 
+
+    });
 
     /* TODO: Write a new test suite named "Initial Entries" */
     describe('Initial Entries', function() {
@@ -100,7 +98,7 @@ $(function() {
             expect($('.feed .entry').length).not.toBe(0);
         });
 
-    }); 
+    });
 
     /* TODO: Write a new test suite named "New Feed Selection" */
     describe('New Feed Selection', function() {
@@ -108,7 +106,7 @@ $(function() {
          * by the loadFeed function that the content actually changes.
          * Remember, loadFeed() is asynchronous.
          */
-        
+
         var firstContent;
 
         beforeEach(function(done) {
@@ -119,10 +117,12 @@ $(function() {
         });
 
         it('check if content changes', function(done) {
-          var secondContent = $('.feed').html();  
-          expect(secondContent).not.toEqual(firstContent);
-          done();
-        }); 
-    }); 
+            loadFeed(1,function(){
+              var secondContent = $('.feed').html();
+              expect(secondContent).not.toEqual(firstContent);
+              done();
+            });
+        });
+    });
 
 }());
